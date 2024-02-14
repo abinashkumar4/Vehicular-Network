@@ -9,7 +9,7 @@ using namespace std;
 #define U_max 640
 #define P_s 0.000001
 #define K_ 0.7
-int initial_soln_count = 10;
+int initial_soln_count = 200;
 
 vector<int> energyTimestamp;
 long long finalprofitmax =0;
@@ -546,7 +546,7 @@ void tempstore(vector<vector<int>>&b,vector<vector<int>>&c){
     int count=0;
     int newrow = 0;
     long double maxxprofit = 0;
-    while(count != 10){
+    while(count != initial_soln_count){
         int idx =maxheap.top().second;
         if(count==0)maxxprofit = maxheap.top().first;
         maxheap.pop();
@@ -572,7 +572,7 @@ void helper()
     initialsolution();
     cout<<"\n *********** ended inital solutions module ********** \n";
    // print2DVectorToSeparateFiles(allocationmat, "solution_");
-    int noNewsols = 5;
+    int noNewsols = initial_soln_count/2;
     vector<vector<int>>newsols(noNewsols,vector<int>(Task.size(),-1));
     vector<vector<int>>tempdata(initial_soln_count+noNewsols,vector<int>(Task.size(),-1));
     for(int itr  =0;itr<40;itr++){
